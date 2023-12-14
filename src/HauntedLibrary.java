@@ -199,5 +199,9 @@ public class HauntedLibrary {
 /**
  * Base program: you're in a haunted library and to escape you must collect a certain amount of books (all unique)
  *
- * You can choose to collect a book
+ * You can choose to collect a book from the shelf (a book is chosen randomly, might already be collected or not)
+ * You can choose to go to a different aisle (might encounter a ghost and lose)
+ * You can choose to go to a different room (might encounter the owner and lose)
+ *
+ * Possible idea to make program more interesting: randomly move books into different rooms and depending on which room the user is in they can collect a book from that room
  * */
