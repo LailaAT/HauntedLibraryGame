@@ -198,7 +198,5 @@ public class HauntedLibrary {
  * You can choose to go to a different room (might encounter the owner and lose)
  *
  * Possible idea to make program more interesting:
- * Add books to random rooms -> there are 4 rooms in total
- * The user starts in room 1 and can collect the books that are available in that room
- * The user can move between rooms where the books will be different in that following room
+ * shuffle books array to make it harder to collect all books in one go
  * */
