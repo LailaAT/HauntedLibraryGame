@@ -1,7 +1,7 @@
 public class Main
 {
     public static void main(String[] args) {
-        HauntedLibrary hauntedLibrary = new HauntedLibrary();
+        HauntedLibraryFinal hauntedLibrary = new HauntedLibraryFinal();
         hauntedLibrary.start();
     }
 }

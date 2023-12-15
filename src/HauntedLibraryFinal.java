@@ -218,6 +218,7 @@ public class HauntedLibraryFinal
                     else System.exit(0);
                     continue;
                 default:
+                    System.out.println("Sorry to see you leave!");
                     System.exit(0);
             }
         } while (hearts > 0 && !won);
