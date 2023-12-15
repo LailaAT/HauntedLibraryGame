@@ -67,8 +67,10 @@ public class HauntedLibraryFinal
             books.add(booksShuffled.get(index));
             currentBooks++;
         }
+        won = currentBooks == numBooks;
     }
 
+    /** Moving between Aisles */
     public static void moveAisle()
     {
         Scanner input = new Scanner(System.in);
@@ -116,6 +118,7 @@ public class HauntedLibraryFinal
         } else System.out.println("Phew! No ghosts in sight");
     }
 
+    /** Leaving the room */
     public static void leaveRoom()
     {
         Scanner input = new Scanner(System.in);
@@ -124,7 +127,7 @@ public class HauntedLibraryFinal
         {
             System.out.println("Uh oh, the owner is right there, what do you do???");
             System.out.println("Type 1 if you want to stay still");
-            System.out.println("Type 2 if you want to walk past it");
+            System.out.println("Type 2 if you want to walk past him");
             int option = 1;
 
             try
@@ -220,7 +223,16 @@ public class HauntedLibraryFinal
         } while (hearts > 0 && !won);
 
         if (hearts <= 0) System.out.println("Oh no! You've lost all your hearts, better luck next time");
-        else if (won) System.out.println("Congrats! You've won and collected all the books you need");
+        else if (won)
+        {
+            System.out.println("Congrats! You've won and collected all the books you need");
+            System.out.println("These are the books you've collected, happy reading!!!");
+            for(String book : books)
+            {
+                System.out.println(book);
+            }
+        }
+
     }
 
     public static void main(String[] args) {
