@@ -1,8 +1,4 @@
-import java.util.HashMap;
-import java.util.Random;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Scanner;
+import java.util.*;
 
 public class HauntedLibrary {
     private static int numBooks; //stores number of books needed to win
@@ -13,11 +9,12 @@ public class HauntedLibrary {
     private static Set<String> books; //will store book names
     //needs to have at least 10 books
     private static HashMap<Integer, String> booksInRooms; // will store which books are in whcih rooms -> 4 rooms in the library
-    private static String[] booksAvailable = {"The Great Gatsby", "1984", "To Kill a Mockingbird" , "The Lord of the Rings",
+    final static String[] BOOKS_AVAILABLE = {"The Great Gatsby", "1984", "To Kill a Mockingbird" , "The Lord of the Rings",
     "Jane Eyre", "Pride and Prejudice", "Animal Farm", "Emma", "One Hundred Years of Solitude", "Frankenstein",
     "Crime and Punishment", "The Secret History", "Great Expectations", "Oliver Twist", "A Tale of Two Cities",
     "The Count of Monte Cristo"};
-    final static int booksAvailableNum = booksAvailable.length;
+    private static ArrayList<String> listshuffled;
+    final static int NUM_BOOKS = BOOKS_AVAILABLE.length;
 
     public HauntedLibrary()
     {
@@ -28,30 +25,27 @@ public class HauntedLibrary {
         this.winning = false;
         this.losing = false;
         this.books = new HashSet<>();
-        this.booksInRooms = new HashMap<>();
+        this.listshuffled = new ArrayList<>(List.of(BOOKS_AVAILABLE));
+        Collections.shuffle(listshuffled); //shuffling array of books
 
-//        for(int i = 0; i < booksAvailableNum; i++)
-//        {
-//            int room = rand.nextInt(5); //choose a random room to place the book in (rooms 1-4)
-//            booksInRooms.put(room, booksAvailable[i]);
-//        }
     }
 
     /** Taking a book off the shelf can lead to winning or continuing the game*/
     public static void getBook()
     {
-        int bookIndex = rand.nextInt(booksAvailableNum);
-        if(books.contains(booksAvailable[bookIndex]))
+        int bookIndex = rand.nextInt(NUM_BOOKS);
+        if(books.contains(BOOKS_AVAILABLE[bookIndex]))
         {
-            System.out.println("Oh no, you already have the " + booksAvailable[bookIndex]);
+            System.out.println("Oh no, you already have the " + BOOKS_AVAILABLE[bookIndex]);
             System.out.println("Maybe try going into a different aisle or room");
         } else
         {
             System.out.println("Great! You found a new book");
-            books.add(booksAvailable[bookIndex]);
+            books.add(listshuffled.get(bookIndex));
             currentBooks++;
             winning = currentBooks == numBooks;
         }
+        Collections.shuffle(listshuffled);
     }
     /** Moving Aisles means you might encounter a ghost*/
     public static void moveAisle()
@@ -203,5 +197,8 @@ public class HauntedLibrary {
  * You can choose to go to a different aisle (might encounter a ghost and lose)
  * You can choose to go to a different room (might encounter the owner and lose)
  *
- * Possible idea to make program more interesting: randomly move books into different rooms and depending on which room the user is in they can collect a book from that room
+ * Possible idea to make program more interesting:
+ * Add books to random rooms -> there are 4 rooms in total
+ * The user starts in room 1 and can collect the books that are available in that room
+ * The user can move between rooms where the books will be different in that following room
  * */
