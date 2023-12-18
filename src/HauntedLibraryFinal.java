@@ -15,12 +15,7 @@
  *  3.2 if the owner doesn't notice you, and you stay still you lose a life, if you walk past it, you're saved
  * */
 
-import java.util.Random;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class HauntedLibraryFinal
 {
@@ -51,6 +46,7 @@ public class HauntedLibraryFinal
         won = false;
         books = new HashSet<>(); //books the user has collected
         booksShuffled = new ArrayList<>(List.of(BOOKS_AVAILABLE));
+        Collections.shuffle(booksShuffled);
     }
 
     /** Getting a book off the shelf */
@@ -67,6 +63,7 @@ public class HauntedLibraryFinal
             books.add(booksShuffled.get(index));
             currentBooks++;
         }
+        Collections.shuffle(booksShuffled);
         won = currentBooks == numBooks;
     }
 
